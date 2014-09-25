@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/geolocation.vm")
+
+#if (!$pageTileDictionaryDTO)
+  #if ($_commandName)
+    #springBind( "${_commandName}.pageTileDictionaryDTO" )
+    #set ($pageTileDictionaryDTO = ${status.value})
+  #end
+#end
+#if($request.isSecure())
+  #if ($request.getServerPort() ==443)
+    #set ($baselink = "https://$request.getServerName()$request.getContextPath()/")
+  #else
+    #set ($baselink = "https://$request.getServerName():$request.getServerPort()$request.getContextPath()/")
+  #end
+  #else
+  #if ($request.getServerPort() ==80)
+    #set ($baselink = "http://$request.getServerName()$request.getContextPath()/")
+  #else
+    #set ($baselink = "http://$request.getServerName():$request.getServerPort()$request.getContextPath()/")
+  #end
+#end
+#set($metadescription= $pageTile.getItemObject($categoryNameDTOHQL, $categoryNameDTOHQL.items.get(0), 'metadescription'))
+#set($metakeywords= $pageTile.getItemObject($categoryNameDTOHQL, $categoryNameDTOHQL.items.get(0), 'metakeywords'))
+#set($pagetitle= $pageTile.getItemObject($categoryNameDTOHQL, $categoryNameDTOHQL.items.get(0), 'pagetitle'))
+
+
+<html  xmlns="http://www.w3.org/1999/xhtml">
+<!-- home_store.vm-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <base href="$baselink"/> 
+    <meta name="description" content="#if($metadescription!="") $metadescription #else   #end" />
+    <meta name="keywords" content="#if($metakeywords!="")$metakeywords #else   #end" />
+    <title>$!pagetitle</title>
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_css.vm")
+</head>
+<body>
+<div id="page">
+  <input id="js-vid" type="hidden" value="$vendorSettingsDTO.vendorId">
+
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/header.vm")
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/primary_nav2.vm")
+
+   <div id="content">
+      <div>
+          <img src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/images/ads/QBlue3700sier-ad-large.jpg" title="Boliy the RVers Choice" /> 
+      </div>
+      <div>
+#parse($home_centerDTO.getItems().get(0).get('home_center'))
+      </div>
+
+#if($home_bottomDTO.getItems().size() >0 )
+      <div class="box">
+#parse($home_bottomDTO.getItems().get(0).get('home_bottom'))
+      </div> 
+#end
+
+   <div> <!-- end content -->   
+
+
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/footer.vm")
+</div>
+
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_js.vm")
+ </body>
+</html>
