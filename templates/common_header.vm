@@ -1,0 +1,20 @@
+#if (!$pageTileDictionaryDTO)
+	#if ($_commandName)
+		#springBind( "${_commandName}.pageTileDictionaryDTO" )
+		#set ($pageTileDictionaryDTO = ${status.value})
+	#end
+#end
+
+#if($request.isSecure())
+	#if ($request.getServerPort() ==443)
+		#set ($baselink = "https://$request.getServerName()$request.getContextPath()/")
+	#else
+		#set ($baselink = "https://$request.getServerName():$request.getServerPort()$request.getContextPath()/")
+	#end
+#else
+	#if ($request.getServerPort() ==80)
+		#set ($baselink = "http://$request.getServerName()$request.getContextPath()/")
+	#else
+		#set ($baselink = "http://$request.getServerName():$request.getServerPort()$request.getContextPath()/")
+	#end
+#end

@@ -1,58 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/test_geo.vm")
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/test_geo.vm")
 #parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/geolocation.vm")
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_header.vm")
+
 #set($itemRow = $singleItemDTO.getItem(0))
-#if($itemRow)
-#set($item = $pageTile.getItemObject($singleItemDTO, $itemRow , "i"))
-#if($item)
-#set($price = $item.itemPrice)
-#end
+	#if($itemRow)
+		#set($item = $pageTile.getItemObject($singleItemDTO, $itemRow , "i"))
+	#if($item)
+		#set($price = $item.itemPrice)
+	#end
 #set($printitemid = $pageTile.getItemObject($singleItemDTO, $itemRow , "itemid"))
-#end
-
-#if($request.isSecure())
-#if ($request.getServerPort() ==443)
-#set ($baselink = "https://$request.getServerName()$request.getContextPath()/")
-#else
-#set ($baselink = "https://$request.getServerName():$request.getServerPort()$request.getContextPath()/")
-#end
-#else
-#if ($request.getServerPort() ==80)
-#set ($baselink = "http://$request.getServerName()$request.getContextPath()/")
-#else
-#set ($baselink = "http://$request.getServerName():$request.getServerPort()$request.getContextPath()/")
-#end
-#end
-
-#if (!$pageTileDictionaryDTO)
-#if ($_commandName)
-#springBind( "${_commandName}.pageTileDictionaryDTO" )
-#set ($pageTileDictionaryDTO = ${status.value})
-#end
 #end
 
 #if ($pageTileDictionaryDTO)
 ###set ($storeMainCategoriesDTO=$pageTileDictionaryDTO.getPageTile("storeMainCategoriesDTO") )
-#set ($childItemsHomeDTO=$pageTileDictionaryDTO.getPageTile("childItemsHomeDTO") )
-#set ($catDropMenuDTO=$pageTileDictionaryDTO.getPageTile("catDropMenuDTO") )
+	#set ($childItemsHomeDTO=$pageTileDictionaryDTO.getPageTile("childItemsHomeDTO") )
+	#set ($catDropMenuDTO=$pageTileDictionaryDTO.getPageTile("catDropMenuDTO") )
 #end
 
 #set($metadescription= $item.metadescription)
 #set($keywords= $item.keywords)
 #set($pagetitle= $item.pagetitle)
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<meta name="description" content="$!metadescription" />
-		<meta name="keywords" content="$!keywords" />
 		<base href="$baselink" />
 		<title>$!pagetitle</title>
+		<meta name="description" content="$!metadescription" />
+		<meta name="keywords" content="$!keywords" />
+
 		<link rel="stylesheet" type="text/css" media="all" href="assets/commercelib/deliveryoption/deliveryoption.css"/>
 		<link rel="stylesheet" type="text/css" media="all" href="assets/commercelib/showimage/showimage.css">
 		<link rel="stylesheet" type="text/css" media="all" href="assets/commercelib/commerce/commerce_shop.css">
-		#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_css.vm")
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_css.vm")
 	</head>
+
 	<body id="item-page">
 		<div id="page">
 			<input id="js-vid" type="hidden" value="$vendorSettingsDTO.vendorId">

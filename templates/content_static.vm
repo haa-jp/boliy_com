@@ -1,30 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
 
-## Facebook Application redirection
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_header.vm")
+
+
+## Facebook Application redirection  
+## ------------------------------------------------------ ##
 #set($fbparam = $request.getParameter("fbapp"))
 #if($fbparam && $fbparam == 'true')
-$response.sendRedirect($seourl.encodeURL("store.html?vid=$vendorSettingsDTO.vendorId&tpt=fb_en"))
+	$response.sendRedirect($seourl.encodeURL("store.html?vid=$vendorSettingsDTO.vendorId&tpt=fb_en"))
 #end
-
-#if (!$pageTileDictionaryDTO)
-  #if ($_commandName)
-    #springBind( "${_commandName}.pageTileDictionaryDTO" )
-    #set ($pageTileDictionaryDTO = ${status.value})
-  #end
-#end
-#if($request.isSecure())
-  #if ($request.getServerPort() ==443)
-    #set ($baselink = "https://$request.getServerName()$request.getContextPath()/")
-  #else
-    #set ($baselink = "https://$request.getServerName():$request.getServerPort()$request.getContextPath()/")
-  #end
-  #else
-  #if ($request.getServerPort() ==80)
-    #set ($baselink = "http://$request.getServerName()$request.getContextPath()/")
-  #else
-    #set ($baselink = "http://$request.getServerName():$request.getServerPort()$request.getContextPath()/")
-  #end
-#end
+## ------------------------------------------------------ ##
+	
 #set($metadescription= $pageTile.getItemObject($categoryNameDTOHQL, $categoryNameDTOHQL.items.get(0), 'metadescription'))
 #set($metakeywords= $pageTile.getItemObject($categoryNameDTOHQL, $categoryNameDTOHQL.items.get(0), 'metakeywords'))
 #set($pagetitle= $pageTile.getItemObject($categoryNameDTOHQL, $categoryNameDTOHQL.items.get(0), 'pagetitle'))
@@ -35,51 +26,46 @@ $response.sendRedirect($seourl.encodeURL("store.html?vid=$vendorSettingsDTO.vend
 #set($categoryName= $pageTile.getItemObject($categoryNameDTOHQL, $categoryNameDTOHQL.items.get(0), 'name'))
 #set($category= $pageTile.getItemObject($childCategoriesDTO, $childCategoriesDTO.getItems(), "c"))
 
+		<base href="$baselink"/>
+		<meta name="description" content="#if($metadescription!="") $metadescription #else   #end" />
+		<meta name="keywords" content="#if($metakeywords!="")$metakeywords #else   #end" />
+		<title>$!pagetitle</title>
 
-<html  xmlns="http://www.w3.org/1999/xhtml">
-<!-- static-content.vm-->
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <base href="$baselink"/> 
-    <meta name="description" content="#if($metadescription!="") $metadescription #else   #end" />
-    <meta name="keywords" content="#if($metakeywords!="")$metakeywords #else   #end" />
-    <title>$!pagetitle</title>
+		#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_css.vm")
+	</head>
 
-#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_css.vm")
-</head>
+	<body>
+		<div id="page">
+			<input id="js-vid" type="hidden" value="$vendorSettingsDTO.vendorId">
 
-<body>
-<div id="page">
-<input id="js-vid" type="hidden" value="$vendorSettingsDTO.vendorId">
+			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/header.vm")
+			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/primary_nav2.vm")
 
-#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/header.vm")
-#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/primary_nav2.vm")
+			<div id="content">
+				<h1 class="categoryTitle">$categoryName</h1>
 
-<div id="content">
-   <h1 class="categoryTitle">$categoryName</h1>
+				#if($category_topDTO.getItems().siz() > 0)
+				<div class="box">
+					#parse($category_topDTO.getItems().get(0).get('category_top'))
+				</div>
+				#end
 
-#if($category_topDTO.getItems().siz() > 0)
-      <div class="box">
-#parse($category_topDTO.getItems().get(0).get('category_top'))
-      </div>
-#end
+				<div class="box">
+					#parse($category_centerDTO.getItems().get(0).get('category_center'))
+				</div>
 
-      <div class="box">
-#parse($category_centerDTO.getItems().get(0).get('category_center'))
-      </div>
+				#if($category_bottomDTO.getItems().size() > 0)
+				<div class="box">
+					#parse($category_bottomDTO.getItems().get(0).get('category_bottom'))
+				</div>
+				#end
 
-#if($category_bottomDTO.getItems().size() > 0)
-      <div class="box">
-#parse($category_bottomDTO.getItems().get(0).get('category_bottom'))
-      </div>   
-#end
+			</div>
 
-</div>
+			<div>
+				#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/footer.vm")
+			</div>
 
-<div>
-#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/footer.vm")
-</div>
-
-#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_js.vm")
- </body>
+			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_js.vm")
+	</body>
 </html>

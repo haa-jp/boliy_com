@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/geolocation.vm")
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_header.vm")
+
+#set($metadescription= $pageTile.getItemObject($categoryNameDTOHQL, $categoryNameDTOHQL.items.get(0), 'metadescription'))
+#set($metakeywords= $pageTile.getItemObject($categoryNameDTOHQL, $categoryNameDTOHQL.items.get(0), 'metakeywords'))
+#set($pagetitle= $pageTile.getItemObject($categoryNameDTOHQL, $categoryNameDTOHQL.items.get(0), 'pagetitle'))
+
+		<base href="$baselink"/>
+		<title>$!pagetitle</title>
+		<meta name="description" content="#if($metadescription!="") $metadescription #else   #end" />
+		<meta name="keywords" content="#if($metakeywords!="")$metakeywords #else   #end" />
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_css.vm")
+	</head>
+
+	<body>
+		<div id="page">
+			<input id="js-vid" type="hidden" value="$vendorSettingsDTO.vendorId">
+
+			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/header.vm")
+			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/primary_nav2.vm")
+
+			<div id="content">
+				<div>
+					<img src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/images/ads/QBlue3700sier-ad-large.jpg" title="Boliy the RVers Choice" />
+				</div>
+				<div>
+					#parse($home_centerDTO.getItems().get(0).get('home_center'))
+				</div>
+
+				#if($home_bottomDTO.getItems().size() >0 )
+				<div class="box">
+					#parse($home_bottomDTO.getItems().get(0).get('home_bottom'))
+				</div>
+				#end
+
+				<div>
+					<!-- end content -->
+
+					#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/footer.vm")
+				</div>
+
+				#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_js.vm")
+	</body>
+</html>
