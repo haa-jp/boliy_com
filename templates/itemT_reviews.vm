@@ -1,0 +1,44 @@
+<div class="reviews">
+	<a name="reviews"></a>
+	<div  class="rtitle subTitle2">
+		#springMessage("vm.itemT_reviews.title")
+	</div>
+	#if($itemreviewDTO && $itemreviewDTO.getReviews().size()==0)
+	<a href="review.html?vid=$vendorSettingsDTO.vendorId&iid=$item.itemid">#springMessage("vm.itemT_reviews.msg")</a>
+	#else
+	#foreach($review in $itemreviewDTO.getReviews())
+	<ul>
+		<li class="r-stars-${review.rating}-0"></li>
+		<li class="title">
+			<strong>$review.title</strong>, $date.format("MMMM dd yyyy",$review.reviewdate)
+		</li>
+		<li class="author">
+			<em>by:</em><span>$review.nickname</span>
+		</li>
+		<li class="comment">
+			$review.details
+			#if($review.showdetail=="yes")
+			<a href="$seourl.encodeURL("detailreview.html?vid=$vendorSettingsDTO.vendorId&iid=$item.itemid&irid=$review.id")" target="_blank">#springMessage("vm.itemT_reviews.details")...</a>
+			#end
+		</li>
+	</ul>
+	#end
+	#if($itemreviewDTO && $itemreviewDTO.getReviews().size()>5)
+	<a href="$seourl.encodeURL("detailreview.html?vid=$vendorSettingsDTO.vendorId&iid=$item.itemid&irid=all")" target="_blank">#springMessage("vm.itemT_reviews.more")...</a>
+	#end
+	<a href="review.html?vid=$vendorSettingsDTO.vendorId&iid=$item.itemid">#springMessage("vm.itemT_reviews.add.review")</a>
+	#end
+</div><!-- End reviews -->
+<div class="reviews">
+	<div  class="rtitle">
+		Twitter #springMessage("vm.itemT_reviews.title")
+	</div>
+	<div id="juitterContainer"></div>
+</div><!-- End twitter reviews -->
+<div class="reviews">
+	<div  class="rtitle">
+		Facebook #springMessage("vm.itemT_reviews.title")
+	</div>
+	<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=156485271069293&amp;xfbml=1"></script><fb:comments href="$esc.url(${baselink})$esc.url(${seourl.encodeURL("storeitem.html?vid=$vendorSettingsDTO.vendorId&iid=$printitemid")})" num_posts="10" width="500"></fb:comments>
+</div>
+

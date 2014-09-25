@@ -1,0 +1,35 @@
+######################################################
+##
+##    Attach this template to test geo location
+##
+######################################################
+
+#set($navigationDTO = $request.session.getAttribute("Navigation").navigations.get($vendorSettingsDTO.vendorId))
+
+#if(!$navigationDTO)
+   #set($error2 = "no navigation")
+#else
+   #set($error2 = "navigation present")
+#end
+ 
+#if ($request.session.getAttribute().size()!= 0)
+   #set($test = "more that 0")
+#else
+  #set($test = "zero")
+#end
+
+....
+
+Country code = $navigationDTO.countrycode
+Country name = $navigationDTO.countryname
+Region code = $navigationDTO.regioncode
+Region name = $navigationDTO.regionname
+City = $navigationDTO.city
+Postal = $navigationDTO.postal
+Latitude = $navigationDTO.latitude
+Longitude = $navigationDTO.longitude
+$test
+$error2
+
+
+
