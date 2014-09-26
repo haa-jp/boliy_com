@@ -1,0 +1,10 @@
+#parse ("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/content_homeText.vm")
+
+<div id="left3">
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/content_landingPage.vm")
+</div>
+
+<div id="right" class="highlight">
+	<a href="why-qblue/decibel-comparison/" alt="Compare the sound level of Boliy Generators"> <img src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/images/decibel_illustration_small.jpg" title="Boliy Decibal Rating" /> </a>
+	<h3> QBlue&trade;. Quieter than a lot of things, including the competition.</h3>
+</div>

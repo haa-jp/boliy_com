@@ -1,0 +1,3 @@
+#if($geoAllow == false)
+	$response.sendRedirect($seourl.encodeURL("store.html?vid=$vendorSettingsDTO.vendorId"))
+#end

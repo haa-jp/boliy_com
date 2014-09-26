@@ -7,7 +7,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 #parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_header.vm")
 
-
 ## Facebook Application redirection  
 ## ------------------------------------------------------ ##
 #set($fbparam = $request.getParameter("fbapp"))
@@ -27,12 +26,11 @@
 #set($category= $pageTile.getItemObject($childCategoriesDTO, $childCategoriesDTO.getItems(), "c"))
 
 		<base href="$baselink"/>
+		<title>$!pagetitle</title>
 		<meta name="description" content="#if($metadescription!="") $metadescription #else   #end" />
 		<meta name="keywords" content="#if($metakeywords!="")$metakeywords #else   #end" />
-		<title>$!pagetitle</title>
-
-		#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_css.vm")
-	</head>
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_css.vm")
+	</head> <!-- content_static -->
 
 	<body>
 		<div id="page">

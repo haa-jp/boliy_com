@@ -1,3 +1,37 @@
+<nav class="top=bar" data-topbar role="navitation">
+	<ul class="title-area">
+		<li class="name">
+			<h1><b>Q</b>Blue&trade;</h1>
+		</li>
+	    <li class="toggle-topbar menu-icon">
+	    	<a href="#"><span>Menu</span></a>
+	    </li>
+	</ul>	
+
+	<section class="top-bar-section">
+		<ul class="right">
+			<li class="active"> <a href="#"> Link </a></li>
+			<li class="has-dropdown"> <a href="#"> Link </a>
+				<ul class="dropdown">
+					<li> <a href="#"> Link </a></li>
+					<li> <a href="#"> Link </a></li>
+				</ul>
+			</li>
+		</ul> <!-- end rnav -->
+
+		<ul class="left">
+			<li> <a href="#"> Link </a></li>
+		</ul> <!-- end lnav -->
+	</section>
+</nav>
+
+<!-- TODO
+	Create navigation DTOs to pickup all categoris and sub categories
+	Make the navidation Dynamic to allow for adding an removng pages 
+	and content.
+-->	 
+
+
 <div id="menu-post">
   <div id="menu-post-inside">
     <div id="menu">

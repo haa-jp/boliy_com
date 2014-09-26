@@ -1,5 +1,18 @@
-<div id="footer">
-	<p>
-		Copyright 2015 Boliy USA.  All rights reserved. <a title="Question, comments, or concerns? E-mail Boliy today!" href="mailto:boliyusasales@gmail.com?Subject=Boliy Generator Inquiry">E-Mail Boliy</a> Toll Free:  877-407-1457
-	</p>
-</div>
+<footer class="row">
+	<div class="large-12 columns">
+		<hr/>
+		<div class="row">
+			<div class="large-6 columns">
+				<p>	Copyright 2015 Boliy USA.  All rights reserved. <a title="Question, comments, or concerns? E-mail Boliy today!" href="mailto:boliyusasales@gmail.com?Subject=Boliy Generator Inquiry">E-Mail Boliy</a> Toll Free:  877-407-1457</p>
+			</div>
+			<div class="large-6 columns">
+				<ul class="inline-list right">
+					<li><a href="#">Link 1</a></li>
+					<li><a href="#">Link 2</a></li>
+					<li><a href="#">Link 3</a></li>
+					<li><a href="#">Link 4</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
