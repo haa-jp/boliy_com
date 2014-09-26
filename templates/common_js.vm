@@ -1,10 +1,8 @@
 <!-- start common_js.vm -->
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/jquery.ui-effects.js"></script>
-<script type="text/javascript" src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/lightbox.js"></script>
-## The overrides javascript below overrides any default commerce shop behaviour and implements its own.  Its usually make of copy/paste segments of commerce_shop code with some tweaks
-<script type="text/javascript" src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/overrides.js"></script>
+<script  rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/vendor/jquery.js"></script>
+<script  rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/foundation.min.js"></script>
+<script  rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/nav.js"></script>
+<script> $(document).foundation();</script>
 
 <script type="text/javascript">
 	var _gaq = _gaq || [];
