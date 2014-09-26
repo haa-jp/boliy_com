@@ -1,16 +1,7 @@
 <!-- start common_css.vm -->
-<link rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/css/style.css" media="all" />
-<link rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/css/lightbox.css" media="all" />
-<link rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/css/menu-style.css" media="all" />
-<link rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/css5/reset-fonts-grids.css">
-
 <!--[if IE 6]> <link rel="stylesheet" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/css/ie6.css" type="text/css" media="all" /> <![endif]-->
 <!--[if IE 7]> <link rel="stylesheet" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/css/ie7.css" type="text/css" media="all" /> <![endif]-->
-
-
-<link rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/css/foundation.css">
-
-<link rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/css/app.css">
-
-<script src="<link rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/js/vendor/modernizr.js"></script>
+<link rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/css/foundation.css">
+<link rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/css/app.css">
+<script src="<link rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/vendor/modernizr.js"></script>
   <!-- End common_css.vm -->˝

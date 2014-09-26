@@ -30,7 +30,14 @@
 	Make the navidation Dynamic to allow for adding an removng pages 
 	and content.
 -->	 
-
+	<ul>
+#foreach($temp in $boliyNavDTO.items)
+	#set($catid = pageTile.getItemObject($boliyNavDTO, $temp, "c"))
+		<li data-cid="${catid.categoryid}" class="has-dropdown">
+			<a href="seourl.encodeURL("store.html?vid=$vendorSettingsDTO.vendorId&cid=${catid.categoryid}")"
+				alt="$catid.description"> $catid.name</a> </li>
+#end
+	</ul>
 
 <div id="menu-post">
   <div id="menu-post-inside">
