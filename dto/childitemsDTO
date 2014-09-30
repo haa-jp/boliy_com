@@ -1,1 +1,56 @@
-SELECT i as i, i.itemid as itemid, ci.categoryid as categoryid, i.shortdesc as shortdesc, i.title as title, i.itemimage as image, inv.instock as instock FROM Inventory inv, com.avetti.commerce.domainmodel.Catitem ci , com.avetti.simplemerce.store.domain.StoreItemForCat i WHERE ci.categoryid= %%cid%% AND i.itemid = ci.itemid AND inv.itemid=i.itemid AND i.itemid in <<vendorid:%%vid%% AND cid:%%cid%% AND -storecode:9 AND hide:0 AND available:true AND ((startdate:[* TO NOW] AND enddate:[NOW TO *]) OR (startdate:"1900-01-01T00:00:00.000Z" AND enddate:"1900-01-01T00:00:00.000Z") OR (startdate:"1900-01-01T00:00:00.000Z" AND enddate:[NOW TO *]) OR (startdate:[* TO NOW] AND enddate:"1900-01-01T00:00:00.000Z")) AND Brand_%%ml%%_mlf:"%%brand%%" AND price_%<%storeCurrency_%%vid%%%>%_d:[%%minp%% TO %%maxp%%] AND Category_%%ml%%_mlf:"%/%category%/%" AND Dimensions_%%ml%%_mlf:"%/%dimensions%/%" AND Flash_%%ml%%_mlf:"%/%flash%/%" AND Viewfinder_%%ml%%_mlf:"%/%viewfinder%/%" AND Power_%%ml%%_mlf:"%/%power%/%" AND Lens_%%ml%%_mlf:"%/%lens%/%" AND Hardware_%%ml%%_mlf:"%/%hardware%/%" AND Convenience_%%ml%%_mlf:"%/%convenience%/%" AND Speaker_%%ml%%_mlf:"%/%speaker%/%" AND Display_%%ml%%_mlf:"%/%display%/%" AND (sgid_il:"-1" OR sgid_il:"%%customer_sgroup%%") &fl=itemid&sort=%%sortci%%(price::price_%<%storeCurrency_%%vid%%%>%_d,stitle::title_copy,newest::modifytime,topsellers::accessnum_l,orderscount::ordercountstatistic_d,averagereview::avaragereviewstatistic_d,zscore::Sys_Merchandising_Priority_p)[zscore desc]>> 
+SELECT i as i, i.itemid as itemid, ci.categoryid as categoryid, i.shortdesc as shortdesc, i.title as title, i.itemimage as image, inv.instock as instock 
+FROM  Inventory inv, com.avetti.commerce.domainmodel.Catitem ci , com.avetti.simplemerce.store.domain.StoreItemForCat i 
+WHERE inv.itemid=i.itemid AND ci.categoryid= %%cid%% AND i.itemid = ci.itemid AND i.itemid in << vendorid:%%vid%% 
+   AND cid:%%cid%% AND -storecode:9 
+   AND hide:0 AND available:true 
+   AND ((startdate:[* TO NOW] 
+   AND enddate:[NOW TO *]) 
+      OR (startdate:"1900-01-01T00:00:00.000Z" 
+   AND enddate:"1900-01-01T00:00:00.000Z") 
+      OR (startdate:"1900-01-01T00:00:00.000Z" 
+   AND enddate:[NOW TO *]) 
+      OR (startdate:[* TO NOW] 
+   AND enddate:"1900-01-01T00:00:00.000Z")) 
+   AND (countrycode_il:"%%iptocountry%%" 
+      OR countrycode_il:ALL) 
+   AND (regioncode_il:"%%iptoregion%%" 
+      OR regioncode_il:ALL) 
+   AND (city_il:"%%iptocity%%" 
+     OR city_il:ALL) AND Sizes_%%ml%%_mlf:"%/%Sizes%/%" 
+     AND Gender_%%ml%%_mlf:"%/%Gender%/%" 
+     AND Size_opt:"%/%Size%/%" 
+     AND price_currency%<%storeCurrency_%%vid%%%>%_shoppergroup%<%shoppergroup_%%vid%%%>%_offercode%<%offercode_%%vid%%%>%_d:[%%minp%% TO %%maxp%%] 
+     AND avaragereviewstatistic_d:[%%review_min%% TO %%review_max%%] 
+     AND Category_%%ml%%_mlf:"%/%category%/%" 
+     AND Dimensions_%%ml%%_mlf:"%/%dimensions%/%" 
+     AND Flash_%%ml%%_mlf:"%/%flash%/%" 
+     AND Viewfinder_%%ml%%_mlf:"%/%viewfinder%/%" 
+     AND Power_%%ml%%_mlf:"%/%power%/%" 
+     AND Lens_%%ml%%_mlf:"%/%lens%/%" 
+     AND Hardware_%%ml%%_mlf:"%/%hardware%/%" 
+     AND Convenience_%%ml%%_mlf:"%/%convenience%/%" 
+     AND Speaker_%%ml%%_mlf:"%/%speaker%/%" 
+     AND Display_%%ml%%_mlf:"%/%display%/%" 
+     AND ic_Maximum_video_resolution_%%ml%%_mlf:"%/%ic_maximum_video_resolution%/%" 
+     AND ic_Digital_zoom_%%ml%%_mlf:"%/%ic_digital_zoom%/%" 
+     AND ic_Optical_zoom_%%ml%%_mlf:"%/%ic_optical_zoom%/%" 
+     AND ic_Display_%%ml%%_mlf:"%/%ic_display%/%" 
+     AND ic_Total_megapixels_%%ml%%_mlf:"%/%ic_total_megapixels%/%" 
+     AND ic_Audio_output_channels_%%ml%%_mlf:"%/%ic_audio_output_channels%/%" 
+     AND ic_Full_HD_%%ml%%_mlf:"%/%ic_full_hd%/%" 
+     AND ic_Optical_disc_player_type_%%ml%%_mlf:"%/%ic_optical_disc_player_type%/%" 
+     AND ic_3D_compatibility_%%ml%%_mlf:"%/%ic_3d_compatibility%/%" 
+     AND ic_Display_resolution_%%ml%%_mlf:"%/%ic_display_resolution%/%" 
+     AND ic_HD_type_%%ml%%_mlf:"%/%ic_hd_type%/%" 
+     AND ic_Hard_drive_capacity_%%ml%%_mlf:"%/%ic_hard_drive_capacity%/%" 
+     AND ic_Processor_clock_speed_%%ml%%_mlf:"%/%ic_processor_clock_speed%/%" 
+     AND ic_Processor_family_%%ml%%_mlf:"%/%ic_processor_family%/%" 
+     AND ic_Internal_memory_%%ml%%_mlf:"%/%ic_internal_memory%/%" 
+     AND ic_Brand_%%ml%%_mlf:"%/%ic_brand%/%" AND (sgid_il:"-1" 
+        OR sgid_il:"%%customer_sgroup%%") 
+     AND Color_opt:"%/%color%/%" 
+     AND Size_opt:"%/%size%/%" &fl=itemid&sort=zscore desc,%%sortci%%(price::price_currency%<%storeCurrency_%%vid%%%>%_shoppergroup%<%shoppergroup_%%vid%%%>%_offercode%<%offercode_%%vid%%%>%_d,stitle::title_copy,newest::modifytime,topsellers::accessnum_l,orderscount::ordercountstatistic_d,averagereview::avaragereviewstatistic_d,zscore::Sys_Merchandising_Priority_l)[price asc]>>
+
+
+
+## REMBER to remove line breake from production code ##

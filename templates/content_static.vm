@@ -33,11 +33,11 @@
 	</head> <!-- content_static -->
 
 	<body>
-		<div id="page">
 			<input id="js-vid" type="hidden" value="$vendorSettingsDTO.vendorId">
-
+		<div class-="row">
 			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/header.vm")
-			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/primary_nav2.vm")
+			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/nav_primary.vm")
+		</div>
 
 			<div id="content">
 				<h1 class="categoryTitle">$categoryName</h1>

@@ -39,12 +39,14 @@
 	</head>
 
 	<body id="item-page">
-		<div id="page">
+		
 			<input id="js-vid" type="hidden" value="$vendorSettingsDTO.vendorId">
+		<div class-="row">
 			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/header.vm")
-			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/primary_nav2.vm")
-			<div id="content">
-				#parse($item_topDTO.getItems().get(0).get('item_top'))
+			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/nav_primary.vm")
+		</div>
+		
+			#parse($item_topDTO.getItems().get(0).get('item_top'))
 				<div class="box">
 					#if($item.itemid)
 					#set($formName = "F$item.itemid")
@@ -52,10 +54,14 @@
 					<form method="POST" name="$formName" action="storeitem.html?$vendorSettingsDTO.vendorId&iid=$item.itemid">
 						<input type="hidden" name="productoption" value="productoption.html?vid=$vendorSettingsDTO.vendorId&cid=21&qp=0">
 						<input type="hidden" id="compCode_0" value="$item.code"/>
+						
 						<div id="js-item-hiddenfields-$item.itemid"></div>
+						
+						
 						#if($geoAllow==true)
-						#if($request.getSession().getAttribute("havewishlist"))
-						#if($request.getSession().getAttribute("havewishlist")=="1")
+							#if($request.getSession().getAttribute("havewishlist"))
+							#if($request.getSession().getAttribute("havewishlist")=="1")
+						
 						<div id="addwishlistdiv" class="warning" style="display:none;">
 							The item has already been added to the Wishlist.
 						</div>
@@ -63,21 +69,29 @@
 							document.getElementById("addwishlistdiv").style.display = 'block';
 						</script>
 						$request.getSession().removeAttribute("havewishlist")
-						#else
+							#else
 						<div id="addwishlistdiv" class="warning" style="display:none;">
 							The item has been added to your Wishlist successfully.
 						</div>
 						<script type="text/javascript">
 							document.getElementById("addwishlistdiv").style.display = 'block';
 						</script>
+						
 						$request.getSession().removeAttribute("havewishlist")
 						#end
 						#end
 						#end
-						<div id="item">
-							<div class="item-desc">
-								<h1 class="title" id="js-item-title-$item.itemid">$item.title</h1>
-								<div id="success"></div>
+						
+						
+						<!-- start Item display -->
+						
+						<div class="row">
+							<h1 class="title" id="js-item-title-$item.itemid">$item.title</h1>
+							<div id="success"></div>
+						</div>		
+
+						<div class="row">
+							<div class="large-8 columns">
 								<div class="item-img">
 									#if($item.itemimage!="")
 									#if($item.itemimage.startsWith("http"))
@@ -110,7 +124,10 @@
 										#end
 
 									</div>
+									
 								</div>
+							</div> <!--end 8 -->
+						
 								#*if($vendorSettingsDTO.themeId)
 								#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/itemT_attributes.vm")
 								#else
@@ -129,6 +146,9 @@
 								****************************************#
 								#if($geoAllow == true)
 								<input type="hidden" name="redirectMode" value="true"/>
+							
+							<div class="large-4 columns">
+									
 								<div class="item-options">
 									<p class="code" id="js-item-code-$item.itemid">
 										#springMessage("vm.itemTemplate.code"): $item.code
@@ -196,8 +216,8 @@
 									<p class="code" id="js-item-code-$item.itemid">
 										#springMessage("vm.itemTemplate.code"): $item.code
 									</p>
-									<p class="shortDesc">
-										$!item.shortdesc
+									<p class="shortDesc"> 
+										$!item.shortdesc	
 									</p>
 									<div>
 										<div>
@@ -206,8 +226,11 @@
 									</div>
 								</div>
 								#end
+						
+						
 								#parse($item_topDTO.getItems().get(0).get('item_top'))
 							</div><!-- End item-desc -->
+						</div>	
 
 							#if($bundleItemsDTO.getItems().size() > 0) <!-- if_bundle -->
 							<div class="item-section">
@@ -249,50 +272,47 @@
 								</div>
 							</div>
 							#end
+							
+							</div> <!-- end 4 -->
+						</div> <!-- end row -->
 
+
+						<div class="row">
+							<div class="large-12 columns">
 							#if($item_centerDTO.getItems().get(0).get('item_center').indexOf('blank.vm') <=0)
-							#parse($item_centerDTO.getItems().get(0).get('item_center'))
+								#parse($item_centerDTO.getItems().get(0).get('item_center'))
 							#else
-							<div class="item-descriptions">
-								#if($item.longdesc!="")
-								<p>
-									$item.longdesc
-								</p>
-								#end
-								#if($item.longdesc2!="")
-								<p>
-									$item.longdesc2
-								</p>
-								#end
-								#if($item.longdesc3!="")
-								<p>
-									$item.longdesc3
-								</p>
-								#end
-							</div>
+								<div class="item-descriptions">
+									#if($item.longdesc!="")
+									<p>	$item.longdesc </p>
+									#end
+									#if($item.longdesc2!="")
+									<p>	$item.longdesc2 </p>
+									#end
+									#if($item.longdesc3!="")
+									<p>	$item.longdesc3	</p>
+									#end
+								</div>
 							#end
 							#*
-							<div class="item-reviews">
-								#if($vendorSettingsDTO.themeId)
-								#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/ItemT_reviews.vm")
-								#else
-								#parse("/$vendorSettingsDTO.vendorId/itemT_reviews.vm")
-								#end
-							</div>
+								<div class="item-reviews">
+									#if($vendorSettingsDTO.themeId)
+										#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/ItemT_reviews.vm")
+									#else
+										#parse("/$vendorSettingsDTO.vendorId/itemT_reviews.vm")
+									#end
+								</div>
 							*#
-
-						</div><!-- End item -->
+							<!-- End item -->
 					</form>
-				</div>
+							</div> 
+					
+						</div> <!-- end row -->
 				## Closes box
-				<div>
-					#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/footer.vm")
-				</div>
-				<!-- end footer -->
-			</div>
-		</div>
-		#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_js.vm")
-		<script language="javascript" src="assets/commercelib/deliveryoption/deliveryoption.js"></script>
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/footer.vm")
+
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_js.vm")
+		<script type="text/javascript" src="assets/commercelib/deliveryoption/deliveryoption.js"></script>
 		<script type="text/javascript" src="assets/commercelib/showimage/showimage.js"></script>
 
 		<script type="text/javascript">

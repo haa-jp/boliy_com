@@ -24,26 +24,27 @@
 			<input id="js-vid" type="hidden" value="$vendorSettingsDTO.vendorId">
 
 			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/header.vm")
-			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/primary_nav2.vm")
+			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/nav_primary.vm")
+		</div>
 
+		<div class="row">
 			<div class="large-12 columns">
 #parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/contnet_home_primary.vm")
-				<div class="row"
 					<div class="large-8 columns">
 #parse($home_leftDTO.getItems().get(0).get('home_left'))
 					</div>
 					<div class="large-4 columns">
 #parse($home_rightDTO.getItems().get(0).get('home_right'))
 					</div>
-				</div>
+			</div> <!--end 12 -->
+		</div> <!-- end row -->
 	
 				#if($home_bottomDTO.getItems().size() >0 )
-				<div class="row">
+		<div class="row">
 					#parse($home_bottomDTO.getItems().get(0).get('home_bottom'))
-				</div>
+		</div>
 				#end
-			</div>
-		</div> <!-- end row -->
+	
 #parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/footer.vm")
 #parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_js.vm")
 	</body>

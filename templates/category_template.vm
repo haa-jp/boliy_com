@@ -167,9 +167,11 @@
 
 	<body id="category" class="ac-skin">
 
-		<div id="page">
+		<div class-="row">
 			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/header.vm")
-			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/primary_nav2.vm")
+			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/nav_primary.vm")
+		</div>
+
 			<div id="content">
 				<div class="box">
 					<h2 class="categoryTitle">$categoryName</h2>
