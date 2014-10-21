@@ -1,6 +1,6 @@
 <div class="row">
     <div class="large-12 columns">
-        <ul>
+        <ul class="inline-list">
 #foreach($temp in $supportNavDTO.items)
 	#set($category = $pageTile.getItemObject($supportNavDTO, $temp, "c"))
             <li><a href="$seourl.encodeURL("store.html?cid=$category.categoryid&vid=$vendorSetingsDTO.vendorId")" title="$category.description"> $category.name</a></li>
