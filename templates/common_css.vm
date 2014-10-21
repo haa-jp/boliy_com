@@ -1,7 +1,14 @@
+
 <!-- start common_css.vm -->
 <!--[if IE 6]> <link rel="stylesheet" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/css/ie6.css" type="text/css" media="all" /> <![endif]-->
 <!--[if IE 7]> <link rel="stylesheet" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/css/ie7.css" type="text/css" media="all" /> <![endif]-->
 <link rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/css/foundation.css">
 <link rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/css/app.css">
-<script src="<link rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/vendor/modernizr.js"></script>
-  <!-- End common_css.vm -->˝
+<script  type="text/javascript" src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/vendor/modernizr.js"></script>
+<style>
+	/* Force megaNav open */
+     #megaNav-contain {
+     	display: block !important;
+     	}
+</style>
+<!-- End common_css.vm -->

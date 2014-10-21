@@ -1,0 +1,54 @@
+<div class="large-8 columns">
+	<h2>1-Year Parts &amp; Labor Warranty</h2> 
+	<p>This warranty is limited to Boliy&trade; products when distributed by Boliy&trade; USA. The following warranty applies to products purchased at retail, or for recreational use after January 1, 2010.</p>
+
+	<p>Original purchaser should retain packing materials and proof of purchase in case of warranty claim.  <strong>Warranty claims cannot be processed without proof of purchase.</strong></p>
+
+	<h3>Eligibility</h3>
+	<p>The product must be purchased in the United States from Boliy&trade; USA or a dealer authorized to sell Boliy products. This warranty applies to first retail purchaser and each subsequent owner during the applicable warranty period.</p> 
+
+	<h3>Coverage</h3>
+	<p>Boliy&trade; USA will repair or replace, at our discretion, any part or unit that is proven to be defective in material or workmanship under normal use during the applicable warranty time period. Warranty repairs and replacements will be made without charge for parts or labor. Anything replaced under warranty becomes the property of Boliy&trade; USA. All parts replaced under warranty will be considered part of the original product, and any warranty on those parts will expire coincident with the original product warranty.</p>
+
+	<h3>Shipping</h3>
+	<p>Unit owner is responsible for the cost of shipping part or unit to Boliy&trade; USA. Boliy&trade; USA will ship repaired or replaced unit at no cost via UPS Standard Ground or SpeeDee. If a unit is found not to be defective, all shipping costs are the responsibility of the unit owner.</p>
+	
+	<h3>Warranty Service</h3>
+	<p><b>1)</b> Contact Boliy&trade; USA with date of purchase information and description of problem to obtain warranty authorization. Boliy&trade; USA is unable to process warranty claims without proof of retail purchase. <br/>
+		<b>2)</b> After warranty authorization, send the unit to our National Service Center (see address below) or authorized dealer service center.</p>
+</div> <!-- end 8 -->
+
+<div class="large-4 columns">
+	<div class="panel callout radius">
+		<ul class="ypdf">
+			<li> <a target="_blank" title="Boliy Warranty Card" 
+				href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/downloads//BoliyGenerator_WarrantyCard.pdf"> 
+					Generator Warranty Card</a></li>
+		</ul>
+	</div>
+
+	<div>
+		<h4>Boliy USA Service</h4>
+		<address>
+			<ul class="vcard">
+				<li class="fn">Boliy USA</li>
+				<li class="street-address">6800 Otter Lake Road</li>
+			  	<li class="locality">Lino Lakes</li>
+				<li><span class="state">Minnesota</span>, <span class="zip">55038</span></li>
+				<li class="email"> <a href="mailto:boliyusasales@gmail.com?Subject=Generator Support Inquiry"> Email Boliy</a></li>
+				<li> <b>Phone:</b> 
+					<ul>
+						<li> 1-877-407-1457</li>
+						<li> 651-407-1457</li>
+					</ul>
+				</li>
+				<li> <b> Support Hours:</b> 
+					<ul>
+						<li>8:00 am - 5:00 pm CST</li>
+					</ul>
+				</li>
+				<li> <a href="http://www.boilyusa.com" alt="Boliy Home Page">www.boliyusa.com</a></li>
+			</ul>
+		</address>
+	</div>
+</div><!-- end 4 -->

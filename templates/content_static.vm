@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
 <html class="no-js" lang="en" >
@@ -34,14 +35,23 @@
 
 	<body>
 			<input id="js-vid" type="hidden" value="$vendorSettingsDTO.vendorId">
-		<div class-="row">
+		<div class="row">
 			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/header.vm")
 			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/nav_primary.vm")
 		</div>
-
-			<div id="content">
+        
+        <div class="row">
+			<div class="large-12 columns">
 				<h1 class="categoryTitle">$categoryName</h1>
-
+				#if($categoryName == 'Support')
+			        #parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/nav_support.vm")
+                #else
+					<div data-alert class="alert-box info radius">
+						<a href="$seourl.encodeURL("storeitem.html?vid=$vendorSettingsDTO.vendorId&cid=23134")" alt="Boliy Generator Support"> <b>QBlue&trade; Support</b></a>
+						<a href="#" class="close">&times;</a>
+					</div>
+                #end
+                
 				#if($category_topDTO.getItems().siz() > 0)
 				<div class="box">
 					#parse($category_topDTO.getItems().get(0).get('category_top'))
@@ -59,11 +69,9 @@
 				#end
 
 			</div>
+        </div>
 
-			<div>
-				#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/footer.vm")
-			</div>
-
-			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_js.vm")
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/footer.vm")
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_js.vm")
 	</body>
 </html>

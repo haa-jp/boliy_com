@@ -1,7 +1,8 @@
 <!-- start common_js.vm -->
-<script  rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/vendor/jquery.js"></script>
-<script  rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/foundation.min.js"></script>
-<script  rel="stylesheet" type="text/css" href="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/nav.js"></script>
+<script  type="text/javascript" src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/vendor/jquery.js"></script>
+<script  type="text/javascript" src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/foundation.min.js"></script>
+<script  type="text/javascript" src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/foundation.topbar.js"></script>
+<script  type="text/javascript" src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/js/nav.js"></script>
 <script> $(document).foundation();</script>
 
 <script type="text/javascript">

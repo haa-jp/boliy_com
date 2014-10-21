@@ -1,0 +1,10 @@
+SELECT c as c, c.categoryid as categoryid,c.name as name, c.image as image, c.description as description 
+FROM Categories c, Catcat cc, Categories c2 
+WHERE c2.categoryid ='23139' 
+   AND c2.vendorid='%%vid%%' 
+   AND cc.parent=c2.categoryid   
+   AND cc.categoryid=c.categoryid 
+ORDER BY c.name
+
+
+## REMBER to remove line breake from production code ##

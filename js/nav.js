@@ -20,7 +20,7 @@
       $("#megaNav-panel").hide();
     });
 
-    this.find("nav a").mouseover(function(event){
+    this.find("nav li a").mouseover(function(event){
       var cid = $(this).attr("data-cid");
 
       if (!cid){

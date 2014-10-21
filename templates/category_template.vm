@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
 <html class="no-js" lang="en" >
@@ -6,18 +7,18 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_header.vm")
-
 		#set($pageURI = "store.html")
+		
 		#macro ( hrefNewParameter $paramName $paramValue )
 		#set($hrefString = "${pageURI}?")
 		#if($request.getParameterMap().size()>0)
-		#foreach($parName in $request.getParameterNames())
-		#foreach($parVal in $request.getParameterValues($parName))
-		#if(!$parName.equals($paramName) && $hrefString.indexOf("${parName}=${parVal}")<0)
-		#set($hrefString = "${hrefString}${parName}=${parVal}&")
-		#end
-		#end
-		#end
+		    #foreach($parName in $request.getParameterNames())
+		        #foreach($parVal in $request.getParameterValues($parName))
+		            #if(!$parName.equals($paramName) && $hrefString.indexOf("${parName}=${parVal}")<0)
+		                #set($hrefString = "${hrefString}${parName}=${parVal}&")
+		            #end
+		        #end
+		    #end
 		#end
 		#set($hrefString = "${hrefString}${paramName}=${response.encodeURL($paramValue)}")
 		$hrefString
@@ -26,13 +27,13 @@
 		#macro ( hrefNewRangeParameter $param1Name $param1Value $param2Name $param2Value)
 		#set($hrefString = "${pageURI}?")
 		#if($request.getParameterMap().size()>0)
-		#foreach($parName in $request.getParameterNames())
-		#foreach($parVal in $request.getParameterValues($parName))
-		#if(!$parName.equals($param1Name) && !$parName.equals($param2Name) && $hrefString.indexOf("${parName}=${parVal}")<0)
-		#set($hrefString = "${hrefString}${parName}=${parVal}&")
-		#end
-		#end
-		#end
+		    #foreach($parName in $request.getParameterNames())
+		        #foreach($parVal in $request.getParameterValues($parName))
+		            #if(!$parName.equals($param1Name) && !$parName.equals($param2Name) && $hrefString.indexOf("${parName}=${parVal}")<0)
+		                #set($hrefString = "${hrefString}${parName}=${parVal}&")
+		            #end
+		        #end
+		    #end
 		#end
 		#set($tempMax = "${param2Value}")
 		#set($hrefString = "${hrefString}${param1Name}=${response.encodeURL($param1Value)}&${param2Name}=${response.encodeURL($tempMax)}")
@@ -42,19 +43,19 @@
 		#macro ( formParameters $param1Name $param2Name)
 		#set($hrefString = "")
 		#if($request.getParameterMap().size()>0)
-		#foreach($parName in $request.getParameterNames())
-		#set($oriv="")
-		#foreach($parVal in $request.getParameterValues($parName))
-		#if($oriv=='' || $oriv!=$parVal)
-		#set($oriv=$parVal )
-		#if(!$parName.equals($param1Name) && !$parName.equals($param2Name))
-		#set($hrefString = "${hrefString}
+    		#foreach($parName in $request.getParameterNames())
+        		#set($oriv="")
+		        #foreach($parVal in $request.getParameterValues($parName))
+		            #if($oriv=='' || $oriv!=$parVal)
+		                #set($oriv=$parVal )
+		                    #if(!$parName.equals($param1Name) && !$parName.equals($param2Name))
+		                        #set($hrefString = "${hrefString}
 		<input type=hidden name=${parName} value='${parVal}'>
 		")
-		#end
-		#end
-		#end
-		#end
+		                    #end
+		            #end
+		        #end
+		    #end
 		#end
 		$hrefString
 		#end
@@ -62,13 +63,13 @@
 		#macro ( hrefRemoveParameter $paramName )
 		#set($hrefString = "${pageURI}?")
 		#if($request.getParameterMap().size()>0)
-		#foreach($parName in $request.getParameterNames())
-		#foreach($parVal in $request.getParameterValues($parName))
-		#if(!$parName.equals($paramName) && $hrefString.indexOf("${parName}=${parVal}")<0)
-		#set($hrefString = "${hrefString}${parName}=${parVal}&")
-		#end
-		#end
-		#end
+		    #foreach($parName in $request.getParameterNames())
+		        #foreach($parVal in $request.getParameterValues($parName))
+		            #if(!$parName.equals($paramName) && $hrefString.indexOf("${parName}=${parVal}")<0)
+		                #set($hrefString = "${hrefString}${parName}=${parVal}&")
+		            #end
+		        #end
+		    #end
 		#end
 		$hrefString
 		#end
@@ -76,29 +77,29 @@
 		#macro ( hrefRemoveRangeParameter $param1Name $param2Name )
 		#set($hrefString = "${pageURI}?")
 		#if($request.getParameterMap().size()>0)
-		#foreach($parName in $request.getParameterNames())
-		#foreach($parVal in $request.getParameterValues($parName))
-		#if(!$parName.equals($param1Name) && !$parName.equals($param2Name) && $hrefString.indexOf("${parName}=${parVal}")<0)
-		#set($hrefString = "${hrefString}${parName}=${parVal}&")
-		#end
-		#end
-		#end
+		    #foreach($parName in $request.getParameterNames())
+		        #foreach($parVal in $request.getParameterValues($parName))
+		            #if(!$parName.equals($param1Name) && !$parName.equals($param2Name) && $hrefString.indexOf("${parName}=${parVal}")<0)
+		                #set($hrefString = "${hrefString}${parName}=${parVal}&")
+		            #end
+		        #end
+		    #end
 		#end
 		$hrefString
 		#end
 
 		#if($request.isSecure())
-		#if ($request.getServerPort() ==443)
-		#set ($baselink = "https://$request.getServerName()$request.getContextPath()/")
-		#else
-		#set ($baselink = "https://$request.getServerName():$request.getServerPort()$request.getContextPath()/")
-		#end
-		#else
-		#if ($request.getServerPort() ==80)
-		#set ($baselink = "http://$request.getServerName()$request.getContextPath()/")
-		#else
-		#set ($baselink = "http://$request.getServerName():$request.getServerPort()$request.getContextPath()/")
-		#end
+		    #if ($request.getServerPort() ==443)
+		        #set ($baselink = "https://$request.getServerName()$request.getContextPath()/")
+		    #else
+		        #set ($baselink = "https://$request.getServerName():$request.getServerPort()$request.getContextPath()/")
+		    #end
+		    #else
+		        #if ($request.getServerPort() ==80)
+		            #set ($baselink = "http://$request.getServerName()$request.getContextPath()/")
+		        #else
+		            #set ($baselink = "http://$request.getServerName():$request.getServerPort()$request.getContextPath()/")
+		    #end
 		#end
 
 		#if (!$pageTileDictionaryDTO)
@@ -147,79 +148,72 @@
 		* this should automatically redirect the category to
 		* the single item in that category.
 		*********************************************#
-		##
 		#set($category1= $pageTile.getItemObject($categoryNameDTOHQL, $categoryNameDTOHQL.items.get(0), 'c'))
 		#set($childItemsViewDTO = $multiPageViews.get("childItemsDTO"))
+		
 		#if($category1.autoview==1 && $childItemsViewDTO.itemsCount==1)
-		#foreach($itemIter in $childItemsDTO.getItems())
-		#set($childItem = $pageTile.getItemObject($childItemsDTO, $itemIter, "i"))
-		#end
-		$response.sendRedirect($seourl.encodeURL("store.html?cid=$catid&vid=$vendorSettingsDTO.vendorId&iid=$childItem.itemid"))
+		    #foreach($itemIter in $childItemsDTO.getItems())
+		        #set($childItem = $pageTile.getItemObject($childItemsDTO, $itemIter, "i"))
+		    #end
+		    $response.sendRedirect($seourl.encodeURL("store.html?cid=$catid&vid=$vendorSettingsDTO.vendorId&iid=$childItem.itemid"))
 		#end
 
 		<title>$!pagetitle</title>
 		<base href="$baselink"/>
 		<meta name="description" content="#if($metadescription!="") $metadescription #else   #end" />
 		<meta name="keywords" content="#if($metakeywords!="")$metakeywords #else   #end" />
-		#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_css.vm")
+	    #parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_css.vm")
 		<link rel="stylesheet" type="text/css" media="all" href="assets/commercelib/commerce/commerce_shop.css"/>
 	</head> <!-- category_template-->
 
-	<body id="category" class="ac-skin">
+	<body>
 
-		<div class-="row">
+		<div class="row">
 			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/header.vm")
 			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/nav_primary.vm")
 		</div>
 
-			<div id="content">
-				<div class="box">
-					<h2 class="categoryTitle">$categoryName</h2>
-					#if($childCategoriesDTO.getItems().size()!=0)
-					#if($categoryName=="ASI Data Feed" || $categoryName=="Promotional Gifts")
-					#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/categoryT_subcategoryGridList.vm")
-					#else
-					#if($vendorSettingsDTO.themeId)
-					#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/categoryT_subcategoryGridList_top.vm")
-					#else
-					#parse("/$vendorSettingsDTO.vendorId/categoryT_subcategoryGridList_top.vm")
-					#end
-					#end
-					#end
-					<div class="homeTop">
-						<div class="overview">
-							#parse($category_ad_topDTO.getItems().get(0).get('category_ad_top'))
-						</div>
-					</div>
-					<div class="homeTop">
-						<div class="overview">
-							#parse($category_topDTO.getItems().get(0).get('category_top'))
-						</div>
-						#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/Cat_Featured_products.vm")
-					</div>
-					#set($itemsDTO = $childItemsDTO)
-					##set($itemsPaginationDTO = "childItemsDTO")
-
-					#set($subpage = $request.getParameter("mpvp"))
-
-					<!-- Use Cache Mode: $use_cache -->
-
-					#if  ($use_cache)
-					#if ($subpage)
-					<!--# include virtual="/store.caches?vid=${vendorSettingsDTO.vendorId}&cid=$catid&ts=inner&ttl=3600&mpv=childItemsDTO&mpvp=$subpage" wait="yes" -->
-					#else
-					<!--# include virtual="/store.caches?vid=${vendorSettingsDTO.vendorId}&cid=$catid&ts=inner&ttl=3600" wait="yes" -->
-					#end
-					#else
-					#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/itemList.vm")
-					#end
-
-				</div>
-				<div>
-					#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/footer.vm")
-				</div>
-			</div>
+		<div class="row">
+			<h2 class="categoryTitle">$categoryName</h2>
+			#if($childCategoriesDTO.getItems().size()!=0)
+    			#if($categoryName=="ASI Data Feed" || $categoryName=="Promotional Gifts")
+	        		#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/categoryT_subcategoryGridList.vm")
+		    	#else
+			    #if($vendorSettingsDTO.themeId)
+			        #parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/categoryT_subcategoryGridList_top.vm")
+			    #else
+			        #parse("/$vendorSettingsDTO.vendorId/categoryT_subcategoryGridList_top.vm")
+			    #end
+			    #end
+			#end
 		</div>
-		#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_js.vm")
+		<div class="row">
+					#parse($category_ad_topDTO.getItems().get(0).get('category_ad_top'))
+		</div>
+		<div class="row">
+					#parse($category_topDTO.getItems().get(0).get('category_top'))
+	    			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/Cat_Featured_products.vm")
+		</div>
+		<div class="row">
+
+			#set($itemsDTO = $childItemsDTO)
+			#set($subpage = $request.getParameter("mpvp"))
+
+			<!-- Use Cache Mode: $use_cache -->
+
+			#if  ($use_cache)
+			    #if ($subpage)
+			<!--# include virtual="/store.caches?vid=${vendorSettingsDTO.vendorId}&cid=$catid&ts=inner&ttl=3600&mpv=childItemsDTO&mpvp=$subpage" wait="yes" -->
+			    #else
+			<!--# include virtual="/store.caches?vid=${vendorSettingsDTO.vendorId}&cid=$catid&ts=inner&ttl=3600" wait="yes" -->
+			#end
+			#else
+			    #parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/itemList.vm")
+			#end
+
+		</div> <!-- end Row -->
+
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/footer.vm")
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_js.vm")
 	</body>
 </html>

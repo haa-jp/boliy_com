@@ -4,7 +4,8 @@
 
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/test_geo.vm")
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/test_geo.vm")
 #parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/geolocation.vm")
 #parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/common_header.vm")
 
@@ -41,7 +42,7 @@
 	<body id="item-page">
 		
 			<input id="js-vid" type="hidden" value="$vendorSettingsDTO.vendorId">
-		<div class-="row">
+		<div class="row">
 			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/header.vm")
 			#parse("/$vendorSettingsDTO.vendorId/$vendorSettingsDTO.themeId/nav_primary.vm")
 		</div>
@@ -459,9 +460,8 @@
 
 		</script>
 
-		<script type="text/javascript" src="assets/plugins/prototype/prototype.js"></script>
-		<script language="javascript" src="assets/commercelib/commerce/commerce.js"></script>
-		<script language="javascript" src="assets/commercelib/commerce/commerce_shop.js"></script>
+  <script type="text/javascript" src="assets/commercelib/commerce/commerce_jQuery.js"></script>
+  <script type="text/javascript" src="assets/commercelib/commerce/commerce_shop_jQuery.js"></script>
 		#if($geoAllow == true)
 		<script type="text/javascript" >
 			Event.observe(window, "load", function() {

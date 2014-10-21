@@ -1,13 +1,10 @@
 <div class="row">
+	<img src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/images/qblue_logo_small.jpg" alt="boliy logo" width="138" height="53" />
+</div>	
+<div class="row">
 	<head class="large-12 columns">
-		<div id="logo_w1">
-			<img src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/images/qblue_logo_small.jpg" alt="boliy logo" width="138" height="53" />
-		</div>
-		<div id="logo_w2"></div>
-		<div id="header_text">
-			<h2> Boliy&trade; USA - The Exclusive
-			<br/>
-			Distributor of <b>Q</b>Blue&trade;. </h2>
-		</div>
+		<h2> Boliy&trade; USA - The Exclusive
+		<br/>
+		Distributor of <b>Q</b>Blue&trade;. </h2>
 	</head>
 </div>

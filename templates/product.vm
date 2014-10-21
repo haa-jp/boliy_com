@@ -1,0 +1,145 @@
+
+<div class="row">
+	<div class="category-item">
+		<input type="hidden" id="parent-itemid-$item.itemid" value="$item.itemid"/>
+		<input type="hidden" id="parent-code-$item.itemid" value="$item.code"/>
+		<input type="hidden" id="parent-qty-$item.itemid" value="1"/>
+		<input type="hidden" id="parent-process-$item.itemid" name="basketItems[${velocityCount}].itemToProcess" value="false">
+		<input type="hidden" id="parent-count-$item.itemid" value="${velocityCount}">
+		<span class="hide"   id="js-item-inv-$item.itemid">0</span>
+		<span class="hide"   id="js-item-itemid-$item.itemid">$item.itemid</span>
+		<div  class="hide"   id="js-item-hiddenfields-$item.itemid">
+			&nbsp;
+		</div>
+
+		<div class="large-3 columns">
+			<div class="image">
+				<div class="badges">
+					#if($item.storeFeatured)
+					<img class="special" src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/images/special_icon.png"/>
+					#end
+
+					#if($item.catFeatured)
+					<img class="feature" src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/images/featured_icon.png"/>
+					#end
+
+					#if($item.newItem)
+					<img class="new" src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/images/new_item_icon.png"/>
+					#end
+
+					#if($item.onSale)
+					<img class="sale" src="store/$vendorSettingsDTO.vendorId/assets/themes/$vendorSettingsDTO.skinname/images/on_sale_icon.png"/>
+					#end
+				</div>
+				#if($item.thumbnail !="")
+				<a href="$seourl.encodeURL("storeitem.html?vid=$vendorSettingsDTO.vendorId&iid=$item.itemid")"><img id="parent-cimage-$item.itemid" src="store$item.thumbnail"></a>
+				#else
+				<a href="$seourl.encodeURL("storeitem.html?vid=$vendorSettingsDTO.vendorId&iid=$item.itemid")" > <img id="parent-cimage-$item.itemid" src="store/$vendorSettingsDTO.vendorId/assets/items/thumbnails/noimage.jpg"/> </a>
+				#end
+			</div>
+			<!-- end image -->
+		</div> <!-- end 3 -->
+
+		<div class="large-6 columns end">
+
+			<div class="text">
+				<div class="name">
+					<h3>
+						<a id="parent-title-$item.itemid" href="$seourl.encodeURL("storeitem.html?vid=$vendorSettingsDTO.vendorId&iid=$item.itemid")">
+							$item.title</a>
+					</h3>
+				</div>
+
+				<div class="short-description">
+					#if($item.shortdesc.length() <= 100)
+						<p>
+							$item.shortdesc
+						</p>
+					#else
+						#set($trimmed = $item.shortdesc.substring(0, 100))
+						<p>
+							$trimmed... <a href="$seourl.encodeURL("storeitem.html?vid=$vendorSettingsDTO.vendorId&iid=$item.itemid")">Read more</a>
+						</p>
+					#end
+				</div>
+				<!-- end feature-list -->
+			</div>
+			<!-- end text -->
+
+			<div class="prices">
+				<ul class="no-bullet">
+					#if($math.round($price.listPrice) > $math.round($price.price))
+					<li class="list-price">
+						<span>#springMessage("vm.categoryT_itemList.listprice"): </span>
+						<em id="parent-listprice-$item.itemid"> #if($viewStoreCurrency)
+						$number.format('currency',$price.listPrice, $viewStoreCurrency.locale)
+						#else
+						$number.format('currency',$price.listPrice)
+						#end </em>
+					</li>
+					#if( $math.sub($price.listPrice,$price.price1)>0)
+					<li class="you-save">
+						#if($viewStoreCurrency)
+						#set($saved = $number.format('currency', $math.sub($price.listPrice,$price.price1), $viewStoreCurrency.locale))
+						#else
+						#set($saved = $number.format('currency', $math.sub($price.listPrice,$price.price1)))
+						#end
+						#set($savedPercent = "$!math.round($math.mul($math.div($math.sub($price.listPrice,$price.price1),$price.listPrice),100))%")
+						#springMessage("vm.searchTemp_itemList.yousave"): <strong><span id="parent-savepercentage-$item.itemid">$!savedPercent</span></strong> (<span id="parent-saveamount-$item.itemid">$!saved</span>)
+					</li>
+					#end
+					#if($math.sub($price.price1, $price.price)>0)
+					<li class="list-price">
+						#springMessage("vm.itemTemplate.plus"):&nbsp;<strong><span id="js-item-plus-$item.itemid">$math.round($math.mul($math.div($math.sub($price.price1,$price.price),$price.price1),100))%</span></strong> (<span class="currency">$regExp.currencySymbol($viewStoreCurrency.locale)</span><span id="js-item-saveplus-$item.itemid">$regExp.showPrice($math.roundTo(2, $math.sub($price.price1, $price.price)))</span>)
+					</li>
+					#end
+					#if($price.points>0)
+					<li class="list-price">
+						#springMessage("vm.itemTemplate.awardpoint"): <span id="js-item-awardpoint-$item.itemid">$price.points</span>
+					</li>
+					#end
+					<li class="price">
+						<span class="currency">$regExp.currencySymbol($viewStoreCurrency.locale)</span>
+						<strong id="parent-pricedollar-$item.itemid" class="integer"> $regExp.currencyInteger($viewStoreCurrency.locale, $price.price) </strong>
+						<sup id="parent-pricecent-$item.itemid" class="decimal">$regExp.currencyFraction($viewStoreCurrency.locale, $price.price)</sup>
+					</li>
+					#elseif($price.listPrice.compare($price.listPrice.doubleValue(),0) == 0)
+					<li class="price">
+						#if($item.offerprices.size() > 0)
+						<span class="no-price">##springMessage("vm.itemTemplate.freeitem")
+							Call for Pricing </span>
+						#else
+						<span id="_price_0" class="no-price">#springMessage("vm.itemTemplate.callprice")</span>
+						#end
+					</li>
+					#else
+					<li class="price">
+						<span class="currency">$regExp.currencySymbol($viewStoreCurrency.locale)</span>
+						<strong id="parentm-pricedollar-$item.itemid" class="integer"> $regExp.currencyInteger($viewStoreCurrency.locale, $price.price) </strong>
+						<sup id="parent-pricecent-$item.itemid" class="decimal">$regExp.currencyFraction($viewStoreCurrency.locale, $price.price)</sup>
+					</li>
+					#end
+				</ul>
+			</div>
+			<!-- end price -->
+
+			<div id="parent-message-$item.itemid" class="item_feedback_msg">
+				&nbsp;
+			</div>
+
+		</div><!-- end 6 -->
+		<div class="large-3 columns">
+			#if($geoAllow == true)
+    			<div class="btnclass addToCartBtn" id="js-item-addtocartbtn-$item.itemid" >
+    				<span class="btn btn-primary"> #springMessage('vm.itemTemplate.addtocart')</span>
+    			</div>
+			#else
+				<div>
+					<a href="where-to-buy" class="btn btn-primary btnclass"> Where to Buy?</a>
+				</div>
+			#end
+		</div> <!-- end 3 -->
+	</div>
+	<!-- End category-item -->
+</div>
+<!-- end row -->

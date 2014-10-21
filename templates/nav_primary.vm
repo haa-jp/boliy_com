@@ -18,17 +18,18 @@
 				alt="$catid.description"> $catid.name</a>  <ul></ul></li>
 #end
 	</ul>
-			</li>
+		</li> &nbsp;
 <!--			<li class="has-dropdown"> <a href="#"> Link </a>
 				<ul class="dropdown">
 					<li> <a href="#"> Link </a></li>
 					<li> <a href="#"> Link </a></li>
 				</ul> -->
 			</li>
-		</ul> <!-- end rnav -->
+		</ul> <!-- end lnav -->
 
 		<ul class="right">
-			<li> <a class="button" href="service/"> Service </a></li>
-		</ul> <!-- end lnav -->
+			<li class="has-form"> 
+				<a class="button" href="service/"> Service </a></li>
+		</ul> <!-- end rnav -->
 	</section>
 </nav>
